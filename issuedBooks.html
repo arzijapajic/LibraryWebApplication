@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="pretrazivanje.css">
+    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        img {
+            width: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="sidebar">
+        <header>
+            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/open-book-1831704-1554648.png" alt="">
+        </header>
+        <ul>
+            <li><a href="AdminDashboard.html"><i class="fa fa-home fa-fw"></i>Dashboard</a></li>
+            <li><a href="totalBooks.html"><i class="fa fa-list-ol"></i>Total books</a></li>
+            <li><a href="addBooks.html"><i class="fa fa-plus"></i>Add books</a></li>
+            <li><a href="issuedBooks.html"><i class="fas fa-calendar-week"></i>Issue books</a></li>
+            <li><a href="members.html"><i class="fa fa-user-circle-o"></i>Members</a></li>
+            <li><a href="messages.html"><i class="far fa-envelope"></i>Contact</a></li>
+            <li><a href="Profile_settings.html"><i class="fa fa-cog fa-fw"></i>Settings</a></li>
+            <li><a href="login.html"><i class="fa fa-sign-out"></i>Log out</a></li>
+
+        </ul>
+    </div>
+
+    <br>
+    <br>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Seach.." title="Type in a name">
+    <br><br>
+
+    <table id="myTable">
+
+        <tr class="header">
+            <th style="width:20%;">Name</th>
+            <th style="width:20%;">Author</th>
+            <th style="width:10%;">ISBN</th>
+            <th style="width:15%;">Student name</th>
+            <th style="width:10%;">Date of issue</th>
+            <th style="width:10%;">Date of return</th>
+
+            <th style="width:10%;">Edit</th>
+            <th style="width:7%;">Delete</th>
+
+
+
+        </tr>
+        <tr id="row1">
+            <td id="name_row1">One Hundred Years of Solitude</td>
+            <td id="country_row1">Gabriel García Márquez</td>
+            <td id="age_row1">123456</td>
+            <td id="avail_row1">Arzija Pajić</td>
+            <td><input type="date" id="birthday" name="birthday" value="2020-01-01"></td>
+            <td><input type="date" id="birthday" name="birthday" value="2020-02-11"></td>
+            <td>
+                <button type="button" id="edit_button1" value="Edit" class="EditButton" onclick="edit_row('1')"><i class="fa fa-edit"></i> Edit</button>
+                <button id="save_button1" value="Save" onclick="save_row('1')" class="SaveButton"><i class="fa fa-save"></i> Save</button>
+            </td>
+            <td><button class="deleteButton" onclick="delete_row('1')"><i class="fa fa-trash"></i> Delete</button></td>
+
+        </tr>
+        <tr id="row2">
+            <td id="name_row2">The Fortress</td>
+            <td id="country_row2">Meša Selimović</td>
+            <td id="age_row1">123456</td>
+            <td id="avail_row1">Arzija Pajić</td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td>
+                <button type="button" id="edit_button2" value="Edit" class="EditButton" onclick="edit_row('2')"><i class="fa fa-edit"></i> Edit</button>
+                <button id="save_button2" value="Save" onclick="save_row('2')" class="SaveButton"><i class="fa fa-save"></i> Save</button>
+            </td>
+            <td><button class="deleteButton" onclick="delete_row('2')"><i class="fa fa-trash"></i> Delete</button></td>
+
+        </tr>
+
+        <tr id="row3">
+            <td id="name_row3">Harry Potter And The Goblet Of Fire</td>
+            <td id="country_row3"> J. K. Rowling</td>
+            <td id="age_row1">123456</td>
+            <td id="avail_row1">Arzija Pajić</td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td>
+                <button type="button" id="edit_button3" value="Edit" class="EditButton" onclick="edit_row('3')"><i class="fa fa-edit"></i> Edit</button>
+                <button id="save_button3" value="Save" onclick="save_row('3')" class="SaveButton"><i class="fa fa-save"></i> Save</button>
+            </td>
+            <td><button class="deleteButton" onclick="delete_row('3')"><i class="fa fa-trash"></i> Delete</button></td>
+
+        </tr>
+
+        <tr id="row4">
+            <td id="name_row4">Stone sleeper</td>
+            <td id="country_row4">Mak Dizdar</td>
+            <td id="age_row1">123456</td>
+            <td id="avail_row1">Arzija Pajić</td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td>
+                <button type="button" id="edit_button4" value="Edit" class="EditButton" onclick="edit_row('4')"><i class="fa fa-edit"></i> Edit</button>
+                <button id="save_button4" value="Save" onclick="save_row('4')" class="SaveButton"><i class="fa fa-save"></i> Save</button>
+            </td>
+            <td><button class="deleteButton" onclick="delete_row('4')"><i class="fa fa-trash"></i> Delete</button></td>
+
+        </tr>
+
+        <tr id="row5">
+            <td id="name_row5">The book thief</td>
+            <td id="country_row5">Markus Zusak</td>
+            <td id="age_row1">123456</td>
+            <td id="avail_row1">Arzija Pajić</td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td>
+                <button type="button" id="edit_button5" value="Edit" class="EditButton" onclick="edit_row('5')"><i class="fa fa-edit"></i> Edit</button>
+                <button id="save_button5" value="Save" onclick="save_row('5')" class="SaveButton"><i class="fa fa-save"></i> Save</button>
+            </td>
+            <td><button class="deleteButton" onclick="delete_row('5')"><i class="fa fa-trash"></i> Delete</button></td>
+
+        </tr>
+
+        <tr id="row6">
+            <td id="name_row6">P.S. I Love You
+            </td>
+            <td id="country_row6">Cecelia Ahern</td>
+            <td id="age_row1">123456</td>
+            <td id="avail_row1">Arzija Pajić</td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td>
+                <button type="button" id="edit_button6" value="Edit" class="EditButton" onclick="edit_row('6')"><i class="fa fa-edit"></i> Edit</button>
+                <button id="save_button6" value="Save" onclick="save_row('6')" class="SaveButton"><i class="fa fa-save"></i> Save</button>
+            </td>
+            <td><button class="deleteButton" onclick="delete_row('6')"><i class="fa fa-trash"></i> Delete</button></td>
+
+        </tr>
+
+        <tr id="row7">
+            <td id="name_row7">The Bridge on the Drina
+            </td>
+            <td id="country_row7">Ivo Andrić</td>
+            <td id="age_row1">123456</td>
+            <td id="avail_row1">Arzija Pajić</td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td><input type="date" id="birthday" name="birthday"></td>
+            <td>
+                <button type="button" id="edit_button7" value="Edit" class="EditButton" onclick="edit_row('7')"><i class="fa fa-edit"></i> Edit</button>
+                <button id="save_button7" value="Save" onclick="save_row('7')" class="SaveButton"><i class="fa fa-save"></i> Save</button>
+            </td>
+            <td><button class="deleteButton" onclick="delete_row('7')"><i class="fa fa-trash"></i> Delete</button></td>
+
+        </tr>
+
+
+    </table>
+    <br>
+    <br>
+    <br>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 1; i < tr.length; i++) {
+                // td1 = tr[i].getElementsByTagName("td")[0];
+                td1 = tr[i];
+
+                if (td1) {
+                    txtValue = td1.textContent || td1.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+
+            }
+        }
+
+        var header = document.getElementById("myDIV");
+        var btns = getElementsByClassName("aktivni");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+                this.className += " active";
+            });
+        }
+
+        function delete_row(no) {
+            document.getElementById("row" + no + "").outerHTML = "";
+        }
+
+        function edit_row(no) {
+            document.getElementById("edit_button" + no).style.display = "none";
+            document.getElementById("save_button" + no).style.display = "block";
+
+            var name = document.getElementById("name_row" + no);
+            var country = document.getElementById("country_row" + no);
+            var age = document.getElementById("age_row" + no);
+            var avail = document.getElementById("avail_row" + no);
+
+
+
+            var name_data = name.innerHTML;
+            var country_data = country.innerHTML;
+            var age_data = age.innerHTML;
+            var avail_data = avail.innerHTML;
+
+            name.innerHTML = "<input type='text' id='name_text" + no + "' value='" + name_data + "'>";
+            country.innerHTML = "<input type='text' id='country_text" + no + "' value='" + country_data + "'>";
+            age.innerHTML = "<input type='text' id='age_text" + no + "' value='" + age_data + "'>";
+            avail.innerHTML = "<input type='text' id='avail_text" + no + "' value='" + avail_data + "'>";
+
+
+        }
+
+        function save_row(no) {
+            var name_val = document.getElementById("name_text" + no).value;
+            var country_val = document.getElementById("country_text" + no).value;
+            var age_val = document.getElementById("age_text" + no).value;
+            var avail_val = document.getElementById("avail_text" + no).value;
+
+            document.getElementById("name_row" + no).innerHTML = name_val;
+            document.getElementById("country_row" + no).innerHTML = country_val;
+            document.getElementById("age_row" + no).innerHTML = age_val;
+            document.getElementById("avail_row" + no).innerHTML = avail_val;
+
+
+
+            document.getElementById("edit_button" + no).style.display = "block";
+            document.getElementById("save_button" + no).style.display = "none";
+        }
+    </script>
+
+
+
+</body>
+
+</html>

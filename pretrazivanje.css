@@ -1,0 +1,183 @@
+/* ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: lightgray;
+}
+
+.active {
+    background-color: gray;
+} */
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.myInput {
+    background-repeat: no-repeat;
+    width: 20%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 2px solid #ddd;
+    margin-bottom: 12px;
+}
+
+.searchContainer {
+    display: grid;
+    grid-template-columns: 1.5rem 4fr 1fr;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.searchContainer:focus-within i {
+    display: none;
+}
+
+.searchContainer:focus-within .searchBox {
+    grid-column: 1/4;
+}
+
+.searchContainer:focus-within .searchBox::placeholder {
+    color: transparent;
+}
+
+.searchIcon {
+    padding: 0.5rem;
+    grid-row: 1;
+    grid-column: 1/2;
+    z-index: 2
+}
+
+.searchBox {
+    border: 0;
+    padding: 0.5rem;
+    grid-column: 2/4;
+    grid-row: 1;
+    outline: none;
+}
+
+.searchButton {
+    background: #538AC5;
+    border: 0;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0;
+    grid-column: 4/5;
+    grid-row: 1;
+}
+
+#myInput {
+    margin-left: 20%;
+    background-image: url('https://www.w3schools.com/css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 40%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid gray;
+    margin-bottom: 12px;
+}
+
+#myTable {
+    margin-left: 20%;
+    border-collapse: collapse;
+    width: 70%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+#myTable th,
+#myTable td {
+    text-align: left;
+    padding: 12px;
+}
+
+#myTable tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header,
+#myTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+/* Style the active class, and buttons on mouse-over */
+
+.active {
+    background-color: #666;
+    color: white;
+}
+
+.deleteButton {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* Darker background on mouse-over */
+
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+.EditButton {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.SaveButton {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+}
+
+
+/* Darker background on mouse-over */
+
+.btn:hover {
+    background-color: darkgrey;
+}

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bookstore</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="skladiste.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="header.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="js/jquery.shop.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <br>
+
+
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <a href="lokacije.html">Locations</a>
+        <a href="kontakt.html">Contact</a>
+
+        <div class="opa">
+            <button class="dropbtn" onclick="DropDownFunction()">Profile
+            <i class="fa fa-caret-down"></i>
+          </button>
+            <div class="dropdown-content" id="myDropdown">
+                <a href="#">My account</a>
+                <a href="settings.html">Settings</a>
+                <a href="login.html">Logout</a>
+            </div>
+        </div>
+        <a href="cart.html">
+            <img alt="Qries" src="cart.png" style="width:30px;height:30px;margin-top:-10px;margin-right: 10px;"></a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#contains">Category 1</a></li>
+                            <li><a href="#its_equal">Category 2</a></li>
+                            <li><a href="#greather_than">Category 3</a></li>
+                            <li><a href="#less_than">Category 4</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#contains">Category 5</a></li>
+                            <li><a href="#its_equal">Category 6</a></li>
+                            <li><a href="#greather_than">Category 7</a></li>
+                            <li><a href="#less_than">Category 8</a></li>
+
+                        </ul>
+                    </div>
+                    <input type="hidden" name="search_param" value="all" id="search_param">
+                    <input id="Search" onkeyup="myFunction()" type="text" class="form-control" name="x" placeholder="Search books by name or author...">
+                    <span class="input-group-btn">
+                        <button  onclick="myFunction()" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="site">
+        <br>
+        <form>
+
+            <select class="form-control" id='firstList' name='firstList' onClick="getFoodItem()">
+            </select>
+
+            <br>
+            <br>
+
+        </form>
+
+        <div id="content">
+            <div id="products">
+                <ul>
+                    <li>
+
+                        <div class="product-description" data-name="The fortress" data-price="5">
+
+                            <h3 class="product-name">The fortress</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="https://www.knjiga.ba/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/slike/tvrdjava_mesa_nova_knjiga.jpg" alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Meša Selimović</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+
+                    <li>
+
+                        <div class="product-description" data-name="Derviš i smrt" data-price="5">
+
+                            <h3 class="product-name">Derviš i smrt</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="data:image/jpeg;base64,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"
+                                    alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Meša Selimović</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+
+                    <li>
+
+                        <div class="product-description" data-name="Silence" data-price="5">
+
+                            <h3 class="product-name">Silence</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="http://pdfknjige.net/uploads/tisine%20mesa%20selimovic.jpg" alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Meša Selimović</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+                    <li>
+
+                        <div class="product-description" data-name="The island" data-price="5">
+
+                            <h3 class="product-name">The island</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1457950124l/8529716.jpg" alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Meša Selimović</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+                    <li>
+
+                        <div class="product-description" data-name="Mist and Moonlight" data-price="5">
+
+                            <h3 class="product-name">Mist and Moonlight</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="https://www.knjiga.ba/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/slike/magla_i_mjesecina.jpg" alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Meša Selimović</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+
+                    <li>
+
+                        <div class="product-description" data-name="Pro et Contra Vuk" data-price="5">
+
+                            <h3 class="product-name">Pro et Contra Vuk</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="https://www.njuskalo.hr/image-w920x690/knjige-knjizevnost/protiv-vuka-mesa-selimovic-slika-133962171.jpg" alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Meša Selimović</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+                    <li>
+
+                        <div class="product-description" data-name="The Circle" data-price="5">
+
+                            <h3 class="product-name">The Circle</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/51mfPM--EcL._SX304_BO1,204,203,200_.jpg" alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Meša Selimović</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+                    <li>
+
+                        <div class="product-description" data-name="Stone Sleeper" data-price="5">
+
+                            <h3 class="product-name">Stone Sleeper</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="https://www.knjiga.ba/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/slike/kameni_spavac_svjetlost.jpg" alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Mak Dizdar</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+
+                    <li>
+
+                        <div class="product-description" data-name="Knees for Madonna" data-price="5">
+
+                            <h3 class="product-name">Knees for Madonna</h3>
+                            <br>
+                            <div class="product-image">
+                                <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1502791527l/36044698._SX318_.jpg" alt="" />
+                            </div>
+                            <div class="product-price">
+                                <p class="qty">Mak Dizdar</p>
+                                <button id="myBtn">Details </button>
+                            </div>
+
+
+                            <form class="add-to-cart" action="cart.html" method="post">
+
+                                <p><input type="submit" value="Add" class="btn" /></p>
+                            </form>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <img class="fotka" src="https://cdn.iconscout.com/icon/free/png-256/warehouse-73-451161.png">
+
+            <p class="footer-links">
+                <a href="home.html">Home</a> ·
+                <a href="locations.html">Locations</a> ·
+                <a href="#">About</a> ·
+                <a href="kontakt.html">Contact</a> ·
+
+            </p>
+
+            <p class="footer-company-name">Interakcija čovjek-računar &copy; 2021</p>
+        </div>
+
+        <div class="footer-center">
+
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Zmaja od Bosne</span> Sarajevo, Bosnia and Herzegovina</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+387 62 413 676</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="tim3@etf.unsa.ba">apajic2@etf.unsa.ba</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About the company</span> A library provides physical (hard copies documents) or digital access (soft copies) materials, and may be a physical location or a virtual space, or both.
+            </p>
+
+            <div class="footer-icons">
+
+
+
+            </div>
+
+        </div>
+    </footer>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Detalji</h2>
+            </div>
+            <div class="modal-body">
+                <p>The Fortress is one of the most significant and fascinating novels to come out of the former Yugoslavia. Published as Tvrđava in Serbian, it is the tenth and among the best-known novels by Mesa Selimovic (1910–1982). In the novel, Ahmet
+                    Shabo returns home to seventeenth-century Sarajevo from the war in Russia, numbed by the death in battle or suicide of nearly his entire military unit. In time he overcomes the anguish of war, only to find that he has emerged a reflective
+                    and contemplative man in a society that does not value, and will not tolerate, the subversive implications of these qualities.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        /* When the user clicks on the button, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                toggle between hiding and showing the dropdown content */
+        function DropDownFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(e) {
+                if (!e.target.matches('.dropbtn')) {
+                    var myDropdown = document.getElementById("myDropdown");
+                    if (myDropdown.classList.contains('show')) {
+                        myDropdown.classList.remove('show');
+                    }
+                }
+            }
+            // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        $(document).ready(function() {
+
+            var list1 = document.getElementById('firstList');
+
+            list1.options[0] = new Option('--Search by category--', '');
+            list1.options[1] = new Option('Sci-Fi');
+            list1.options[2] = new Option('Novels');
+        });
+        for (let item of items) {
+            if (item.querySelector(".submenu")) {
+                item.addEventListener("click", toggleItem, false);
+                item.addEventListener("keypress", toggleItem, false);
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
